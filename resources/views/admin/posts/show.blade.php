@@ -11,7 +11,8 @@
         <thead>
             <tr>
             <th class="text-center" scope="col">ID</th>
-            <th class="text-center" scope="col">image</th>
+            <th class="text-center" scope="col">Image</th>
+            <th class="text-center" scope="col">Category</th>
             <th class="text-center" scope="col">Edit</th>
             <th class="text-center" scope="col">Delete</th>
             </tr>
@@ -20,8 +21,9 @@
             <tr>
                 <h1>{{ $post->title }}</h1>
                 <th class="text-center" scope="row">{{ $post->id}}</th>
-                {{-- <th class="text-center" scope="row"><img src="{{ $post->image}}" alt="{{ $post->title }}" width="200px" height="200px"></th> --}}
-                <th class="text-center" scope="row"><img src="{{ asset('storage/' . $post->uploaded_img )}}" width="100px" height="100px"></th>
+                <th class="text-center" scope="row"><img src="{{ $post->image}}" alt="{{ $post->title }}" width="100px" height="100px"></th>
+                <td class="text-center">{{ $post->category->name}}</td>
+                {{-- <th class="text-center" scope="row"><img src="{{ asset('storage/' . $post->uploaded_img )}}" width="100px" height="100px"></th> --}}
                 <td class="text-center"><a href="{{ route('admin.posts.edit', ['post' => $post->id]) }}" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a></td>
                 <td class="text-center">
                     <button class="btn btn-danger btn-delete-me" data-id="{{ $post->id }}"><i class="fa-solid fa-trash-can"></i></button>

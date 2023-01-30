@@ -30,5 +30,6 @@ Route::middleware('auth')
     ->group(function () {
         Route::get('/', 'PageController@dashboard')->name('dashboard');
         Route::resource('posts', 'PostController');
+        Route::resource('categories', 'CategoryController');
 });
 

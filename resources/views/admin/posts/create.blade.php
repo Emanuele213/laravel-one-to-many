@@ -29,6 +29,25 @@
                 @enderror
             </div>
         </div>
+
+        <div class="mb-3">
+            <label for="category_id" class="form-label">Categoria</label>
+            <select class="form-select @error('category_id') is-invalid @enderror" id="category_id" name="category_id">
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+            <div class="invalid-feedback">
+                @error('category_id')
+                    <ul>
+                        @foreach ($errors->get('category_id') as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                @enderror
+            </div>
+        </div>
+
         <div class="col-md-12">
             <label for="image" class="form-label">URL Image</label>
             <input type="url" class="form-control @error('image') is-invalid @enderror" id="image" name="image" value="{{ old('image')}}">
@@ -42,7 +61,8 @@
                 @enderror
             </div>
         </div>
-        <div class="mb-12">
+
+        {{-- <div class="mb-12">
             <label for="uploaded_img" class="form-label">Upload image</label>
             <input class="form-control @error('uploaded_img') is-invalid @enderror" type="file" id="uploaded_img" name="uploaded_img">
             <div class="invalid-feedback">
@@ -54,7 +74,8 @@
                     </ul>
                 @enderror
             </div>
-        </div>
+        </div> --}}
+
         <div class="mb-12">
             <label for="content" class="form-label">Content</label>
             <textarea class="form-control @error('content') is-invalid @enderror" id="content" placeholder="Content" name="content">{{ old('content')}}</textarea>

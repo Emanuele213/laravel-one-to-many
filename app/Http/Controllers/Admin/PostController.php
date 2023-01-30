@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -16,10 +17,12 @@ class PostController extends Controller
                 'string',
                 'max:100',
                 ],
-        'title'     => 'required|string|max:100|',
-        'image'     => 'string|max:100|',
-        'content'   => 'string',
-        'excerpt'   => 'string',
+        'title'         => 'required|string|max:100',
+        'category_id'   => 'required|integer|exists:categories,id',
+        'image'         => 'string|max:100',
+        //'uploaded_img'  => 'image|max:1024',
+        'content'       => 'string',
+        'excerpt'       => 'string',
     ];
     /**
      * Display a listing of the resource.
@@ -45,7 +48,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $categories = Category::all('id', 'name');
+        return view('admin.posts.create', [ 'categories' => $categories]);
     }
 
     /**
@@ -61,15 +65,15 @@ class PostController extends Controller
         $request->validate($this->validations);
         //
         $data = $request->all();
-        $data['uploaded_img'] = $data['uploaded_img'] ?? ' ';
-        $img_path = Storage::put('uploads', $data ['uploaded_img']);
+        //$data['uploaded_img'] = $data['uploaded_img'] ?? null;
+        //$img_path = Storage::put('uploads', $data ['uploaded_img']);
 
         //salvare i dati
         $post = new Post;
         $post ->slug              = $data['slug'];
         $post ->title             = $data['title'];
         $post ->image             = $data['image'];
-        $post ->uploaded_img      = $img_path;
+        //$post ->uploaded_img      = $img_path;
         $post ->content           = $data['content'];
         $post ->excerpt           = $data['excerpt'];
         $post ->save();

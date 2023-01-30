@@ -11,8 +11,9 @@
         <thead>
             <tr>
             <th class="text-center" scope="col">ID</th>
-            <th class="text-center" scope="col">slug</th>
-            <th class="text-center" scope="col">title</th>
+            <th class="text-center" scope="col">Slug</th>
+            <th class="text-center" scope="col">Title</th>
+            <th class="text-center" scope="col">Category</th>
             <th class="text-center" scope="col">View</th>
             <th class="text-center" scope="col">Edit</th>
             <th class="text-center" scope="col">Delete</th>
@@ -24,6 +25,7 @@
                 <th class="text-center" scope="row">{{ $post->id}}</th>
                 <td class="text-center">{{ $post->slug}}</td>
                 <td class="text-center">{{ $post->title}}</td>
+                <td class="text-center">{{ $post->category->name}}</td>
                 <td class="text-center"><a href="{{ route('admin.posts.show', ['post' => $post->id]) }}" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a></td>
                 <td class="text-center"><a href="{{ route('admin.posts.edit', ['post' => $post->id]) }}" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a></td>
                 <td class="text-center">
