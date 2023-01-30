@@ -1,0 +1,31 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+//Fontawesome
+$fa-font-path: "./fonts/font-awesome" !default;
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+
+.overlay {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    background-color: rgba($color: black, $alpha: .7);
+}
+
+.delete-confirmation {
+    margin: auto;
+    padding: 1.5rem;
+    width: 300px;
+    height: 200px;
+    background-color: white;
+    border-radius: .5rem;
+}
